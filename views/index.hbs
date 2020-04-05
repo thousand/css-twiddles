@@ -1,2 +1,12 @@
+<main>
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<nav class="twiddle-nav">
+  <ul class="twiddle-nav-list">
+    {{#each allTwiddles as |t|}}
+      <li class="twiddle-nav-list-item twiddle-nav-list-item-{{t.slug}}">
+        <a href="/{{t.slug}}">{{t.name}}</a>
+      </li>
+    {{/each}}
+  </ul>
+</nav>
+</main>

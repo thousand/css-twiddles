@@ -2,9 +2,27 @@
 <html>
 <head>
   <title>{{title}} — {{twiddleName}}</title>
-  <link rel='stylesheet' href='/stylesheets/twiddles/{{twiddleName}}.css' />
+  <link rel='stylesheet' href='/stylesheets/twiddles/{{twiddle}}.css' />
 </head>
 <body>
-{{{body}}}
+
+<nav class="twiddle-nav">
+  <ul class="twiddle-nav-list">
+    <li class="twiddle-nav-list-item twiddle-nav-list-item-home">
+      <a href="/" class="twiddle-nav-link twiddle-nav-link-home">Home</a>
+    </li>
+    {{#each allTwiddles as |t|}}
+      <li class="twiddle-nav-list-item twiddle-nav-list-item-{{t.slug}}">
+        <a class="twiddle-nav-link twiddle-nav-link-{{t.slug}}" href="/{{t.slug}}">{{t.name}}</a>
+      </li>
+    {{/each}}
+  </ul>
+</nav>
+
+<main>
+  {{{body}}}
+</main>
+
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 </html>

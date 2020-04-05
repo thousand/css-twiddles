@@ -1,18 +1,24 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var stylus = require('stylus');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const livereload = require('livereload');
+const connectLivereload = require("connect-livereload");
+const logger = require('morgan');
+const stylus = require('stylus');
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 
-var app = express();
+const app = express();
+
+const liveReloadServer = livereload.createServer();
+liveReloadServer.watch(path.join(__dirname, 'public'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+app.use(connectLivereload());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -36,6 +42,12 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => {
+    liveReloadServer.refresh();
+  }, 100);
 });
 
 module.exports = app;

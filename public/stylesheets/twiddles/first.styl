@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,700;1,300;1,700&family=Merriweather:ital,wght@0,400;0,900;1,400;1,900&display=swap');brand-color = hsl(127, 65%, 65%)
+
+:root
+  background: #222
+  color: #eee
+
+  font-family: 'Merriweather Sans', sans-serif
+  line-height: 1.8
+  font-size: 87%
+
+body
+  margin: 16rem auto 8rem 8rem
+  width: 50rem
+
+h1, h2, h3, h4, h5, h6
+  font-family: 'Merriweather', serif
+  margin: 3rem 0 1.5rem
+  line-height: 1.45
+
+h1
+  font-size: 7rem
+h2
+  font-size: 5rem
+h3
+  font-size: 4rem
+h4
+  font-size: 3rem
+h5
+  font-size: 2.5rem
+h6
+  font-size: 2rem
+
+a
+  color: brand-color
+  text-decoration: none
+
+a:visited
+  color: spin(brand-color, 96deg)
+
+a:hover
+  text-decoration: underline
+
+.twiddle-nav
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+  padding: 1rem 8rem
+  background: #222
+  border-bottom: 1px solid #000
+  box-shadow: 0 0 5rem 5rem #161616
+  font-family: 'Merriweather', serif
+  font-size: 1.5rem
+  font-weight: bold
+
+body:after
+  content: ""
+  display: block
+  position: fixed
+  left: 0
+  right: 0
+  bottom: 0
+  background: #222
+  box-shadow: 0 0 5rem 5rem #161616
+
+.twiddle-nav-list
+  list-style: none
+  padding: 0
+  margin: 0
+
+.twiddle-nav-list-item
+  display: inline-block
+  & + &
+    margin-left: 2rem
+
+
+.twiddle-nav-link
+  color: #eee
+  &:hover
+    color: brand-color
